@@ -10,15 +10,19 @@ def add_todo():
     print(todo)
 
 
-
 st.title("Enda's ToDo App")
 st.subheader("A todo app to track tasks")
 st.write("This should help increase productivity.")
 
-for todo in todos:
-    st.checkbox(todo)
+for index, todo in enumerate(todos):
+    checkbox = st.checkbox(todo, key=todo)
+    # print(todo)
+    if checkbox:
+        todos.pop(index)
+        functions.write_todos(todos)
+        del st.session_state[todo]
+        st.experimental_rerun()
 
 st.text_input(label="Enter a todo item:", placeholder="Add new to do item...", on_change=add_todo, key="new_todo")
 
-st.session_state # used to output session state to UI
-
+# st.session_state  # used to output session state to UI
