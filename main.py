@@ -16,7 +16,7 @@ st.write("This should help increase productivity.")
 
 for index, todo in enumerate(todos):
     checkbox = st.checkbox(todo, key=todo)
-    # print(todo)
+    # print
     if checkbox:
         todos.pop(index)
         functions.write_todos(todos)
